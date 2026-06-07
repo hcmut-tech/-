@@ -664,6 +664,44 @@ footer {
   .projects { padding: 80px 24px 24px 24px; }
   .projects-gallery { grid-template-columns: 1fr; gap: 28px; }
 }
+/* ================================================
+   SERVICES
+   ================================================ */
+.services { padding: var(--section) var(--pad); background: var(--light); }
+.services-grid { margin-top: 28px; display: flex; flex-direction: column; gap: 3px; }
+.svc-card {
+  background: var(--white); padding: 24px 20px;
+  position: relative; overflow: hidden;
+  border-left: 3px solid transparent;
+  transition: border-color .2s;
+  cursor: pointer;
+}
+.svc-card.active, .svc-card:active { border-left-color: var(--red); }
+.svc-card-header {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 0;
+}
+.svc-icon {
+  width: 44px; height: 44px; background: var(--light);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+  transition: background .2s;
+}
+.svc-card.active .svc-icon, .svc-card:active .svc-icon { background: var(--red); }
+.svc-num { position: absolute; top: 12px; right: 16px; font-size: 50px; font-weight: 900; color: rgba(0,0,0,.04); line-height: 1; }
+.svc-title { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.svc-toggle { margin-left: auto; font-size: 20px; color: var(--gray); transition: transform .3s; flex-shrink: 0; }
+.svc-card.open .svc-toggle { transform: rotate(180deg); color: var(--red); }
+.svc-body {
+  max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .25s;
+}
+.svc-card.open .svc-body { max-height: 300px; padding-top: 16px; }
+.svc-body p { font-size: var(--text-sm); color: var(--gray); line-height: 1.75; font-weight: 300; margin-bottom: 12px; }
+.svc-body-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: var(--text-xs); font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--red);
+}
+
 </style>
 </head>
 <body>
