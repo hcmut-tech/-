@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hamburger Menu - Copy This Code</title>
+
+<!--
+==============================================
+HAMBURGER MENU CODE - SẢN PHẨM HOÀN CHỈNH
+==============================================
+Sao chép toàn bộ phần này sang website khác.
+Bao gồm: HTML, CSS, JavaScript
+==============================================
+-->
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+/* ================================================
+   CSS VARIABLES – Thay đổi màu sắc tại đây
+   ================================================ */
+:root {
+  --red:        #C8102E;   /* Màu chủ đạo */
+  --red-dark:   #A00C24;   /* Màu đỏ đậm */
+  --dark:       #1A1A1A;   /* Nền tối */
+  --gray:       #6B6B6B;   /* Chữ mờ */
+  --light:      #F5F5F5;   /* Nền sáng */
+  --border:     #E5E5E5;   /* Đường kẻ */
+  --white:      #FFFFFF;
+
+  /* Font size */
+  --text-xs:    11px;
+  --text-sm:    13px;
+  --text-base:  15px;
+  --pad:        20px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--dark);
+  overflow-x: hidden;
+}
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+/* ================================================
+   NAVBAR STYLING
+   ================================================ */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 8px rgba(0,0,0,0.07);
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--pad);
+  height: 60px;
+}
+
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-mark {
+  width: 36px;
+  height: 36px;
+  background: var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 75% 100%, 0 100%);
+  flex-shrink: 0;
+}
+
+.logo-mark svg {
+  width: 18px;
+  height: 18px;
+}
+
+.logo-text {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.logo-text span {
+  color: var(--red);
+}
+
+/* ================================================
+   HAMBURGER BUTTON STYLING
+   ================================================ */
+.hamburger {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--dark);
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+/* Hamburger animation khi open */
+.hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ================================================
+   MOBILE MENU DRAWER STYLING
+   ================================================ */
+.nav-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--white);
+  z-index: 99;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  padding-top: 60px;
+  overflow-y: auto;
+}
+
+/* Drawer animation khi open */
+.nav-drawer.open {
+  transform: translateX(0);
+}
+
+/* Drawer links container */
+.nav-drawer-links {
+  padding: var(--pad);
+  flex: 1;
+}
+
+.nav-drawer-links a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  font-size: var(--text-base);
+  font-weight: 600;
+  border-bottom: 1px solid var(--border);
+  color: var(--dark);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.nav-drawer-links a:active {
+  color: var(--red);
+}
+
+.nav-drawer-links a .chevron {
+  color: var(--gray);
+  font-size: 18px;
+}
+
+/* Sub-menu links */
+.nav-drawer-links .sub-link {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--gray) !important;
+  padding: 12px 0 12px 16px !important;
+  text-transform: none !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* Drawer bottom CTA */
+.nav-drawer-bottom {
+  padding: var(--pad);
+  border-top: 1px solid var(--border);
+  background: var(--light);
+}
+
+.nav-cta-full {
+  display: block;
+  text-align: center;
+  background: var(--red);
+  color: white;
+  padding: 16px;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.nav-cta-full:active {
+  background: var(--red-dark);
+}
+
+/* ================================================
+   DESKTOP RESPONSIVE (≥ 768px)
+   ================================================ */
+@media (min-width: 768px) {
+  /* Hide hamburger on desktop */
+  .hamburger {
+    display: none;
+  }
+
+  /* Show nav links on desktop */
+  .nav-drawer {
+    position: static;
+    transform: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    background: none;
+    overflow: visible;
+    flex: 1;
+    justify-content: flex-end;
+  }
+
+  .nav-drawer-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    gap: 0;
+  }
+
+  .nav-drawer-links a {
+    padding: 0 18px;
+    height: 60px;
+    border-bottom: none;
+    font-size: 12px;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .nav-drawer-links a:hover {
+    color: var(--red);
+    border-bottom-color: var(--red);
+  }
+
+  .nav-drawer-links .chevron {
+    display: none;
+  }
+
+  .nav-drawer-links .sub-link {
+    display: none;
+  }
+
+  .nav-drawer-bottom {
+    padding: 0;
+    border: none;
+    background: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-cta-full {
+    padding: 10px 22px;
+    border-radius: 0;
+    white-space: nowrap;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- ============================================
+     NAVBAR WITH HAMBURGER MENU
+     COPY THIS ENTIRE SECTION
+     ============================================ -->
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <!-- LOGO -->
+    <a class="logo" href="#home">
+      <div class="logo-mark">
+        <svg viewBox="0 0 22 22" fill="none">
+          <path d="M4 18V8L11 3L18 8V18H13V13H9V18H4Z" fill="white"/>
+        </svg>
+      </div>
+      <div class="logo-text">YOUR<span>LOGO</span></div>
+    </a>
+
+    <!-- HAMBURGER BUTTON (mobile only) -->
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU DRAWER -->
+<div class="nav-drawer" id="navDrawer">
+  <div class="nav-drawer-links">
+    <a href="#about" onclick="closeMenu()">About <span class="chevron">›</span></a>
+    <a href="#services" onclick="closeMenu()">Services <span class="chevron">›</span></a>
+    <!-- Sub-links example -->
+    <a href="#service-1" class="sub-link">↳ Service 1 <span class="chevron">›</span></a>
+    <a href="#service-2" class="sub-link">↳ Service 2 <span class="chevron">›</span></a>
+    <a href="#projects" onclick="closeMenu()">Projects <span class="chevron">›</span></a>
+    <a href="#team" onclick="closeMenu()">Team <span class="chevron">›</span></a>
+    <a href="#contact" onclick="closeMenu()">Contact <span class="chevron">›</span></a>
+  </div>
+  <div class="nav-drawer-bottom">
+    <a href="#contact" class="nav-cta-full" onclick="closeMenu()">📋 Get Free Quote</a>
+  </div>
+</div>
+
+<!-- ============================================
+     EXAMPLE CONTENT
+     ============================================ -->
+
+<section id="about" style="padding: 60px 20px; background: #f5f5f5;">
+  <h2 style="font-size: 32px; margin-bottom: 20px;">About Us</h2>
+  <p style="font-size: 16px; color: #666; line-height: 1.6;">
+    Welcome to our website. Click the hamburger menu at the top to test the navigation.
+  </p>
+</section>
+
+<section id="services" style="padding: 60px 20px;">
+  <h2 style="font-size: 32px; margin-bottom: 20px;">Services</h2>
+  <p style="font-size: 16px; color: #666; line-height: 1.6;">
+    This section demonstrates the menu navigation.
+  </p>
+</section>
+
+<!-- ============================================
+     JAVASCRIPT CODE
+     ============================================ -->
+
+<script>
+// ─── HAMBURGER MENU FUNCTIONALITY ───
+
+const hamburger = document.getElementById('hamburger');
+const navDrawer = document.getElementById('navDrawer');
+
+// Toggle menu on hamburger click
+hamburger.addEventListener('click', () => {
+  const isOpen = navDrawer.classList.toggle('open');
+  hamburger.classList.toggle('open', isOpen);
+  
+  // Prevent body scroll when menu is open
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+});
+
+// Close menu function
+function closeMenu() {
+  navDrawer.classList.remove('open');
+  hamburger.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.navbar') && !e.target.closest('.nav-drawer')) {
+    closeMenu();
+  }
+});
+
+</script>
+
+<!-- ============================================
+     COPY INSTRUCTIONS
+     ============================================
+
+HƯỚNG DẪN COPY:
+
+1. CSS VARIABLES (nếu chưa có):
+   - Copy phần :root { ... } để thiết lập màu sắc
+
+2. HTML STRUCTURE:
+   - Copy từ <nav class="navbar"> đến </div> (closing nav-drawer-bottom)
+   - Điều chỉnh các link href và text theo website của bạn
+
+3. CSS STYLING:
+   - Copy toàn bộ phần <style>
+   - Thay thế các màu nếu cần
+
+4. JAVASCRIPT:
+   - Copy từ <script> đến </script>
+   - Đảm bảo ID "hamburger" và "navDrawer" khớp với HTML
+
+5. CUSTOMIZATION:
+   - Thay đổi .logo-text thành tên công ty của bạn
+   - Điều chỉnh màu trong CSS variables
+   - Thêm/xóa menu items theo nhu cầu
+   - Trên desktop (≥768px), menu tự động chuyển sang horizontal
+
+============================================ -->
+
+</body>
+</html>
