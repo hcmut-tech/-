@@ -306,7 +306,22 @@ body {
 .svc-desc { font-size: 13px; color: var(--gray); line-height: 1.75; font-weight: 300; transition: color 0.3s; }
 .svc-arrow { margin-top: 28px; font-size: 20px; color: var(--red); display: block; transition: color 0.3s, transform 0.3s; }
 .svc-card:hover .svc-arrow { transform: translateX(6px); }
-
+/* ================================================
+   WHY US
+   ================================================ */
+.why { padding: var(--section) var(--pad); background: var(--light); }
+.why-list { margin-top: 28px; display: flex; flex-direction: column; gap: 0; }
+.why-item {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 20px 0; border-bottom: 1px solid var(--border);
+}
+.why-item:first-child { border-top: 1px solid var(--border); }
+.why-num {
+  font-size: 28px; font-weight: 900; color: var(--red); line-height: 1;
+  min-width: 36px; flex-shrink: 0;
+}
+.why-item h4 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
+.why-item p { font-size: 12px; color: var(--gray); line-height: 1.65; font-weight: 300; }
 /* ─── CONTACT ─── */
 .contact { padding: 120px 60px; }
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: start; }
@@ -686,6 +701,40 @@ footer { padding: 40px 16px 20px; }
     <div class="svc-card reveal"><div class="svc-icon-wrap" aria-hidden="true">🌿</div><div class="svc-num" aria-hidden="true">06</div><div class="svc-title">Nội Thất & Cảnh Quan</div><p class="svc-desc">Thiết kế và thi công nội thất, sân vườn cảnh quan — tạo hệ sinh thái không gian sống hoàn chỉnh và đồng bộ từ trong ra ngoài.</p><span class="svc-arrow" aria-hidden="true">→</span></div>
   </div>
 </section>
+<section class="why reveal" id="why">
+  <div class="section-tag"><span>Tại Sao Chọn Chúng Tôi</span></div>
+  <h2 class="section-title">CAM KẾT<br>CHẤT LƯỢNG</h2>
+  <div class="why-list">
+    <div class="why-item">
+      <div class="why-num">01</div>
+      <div>
+        <h4>Đội Ngũ Chuyên Nghiệp</h4>
+        <p>Hơn 350 kỹ sư và kiến trúc sư có chứng chỉ hành nghề, kinh nghiệm thực tế đa dạng trên nhiều loại công trình lớn nhỏ.</p>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-num">02</div>
+      <div>
+        <h4>Vật Liệu Chất Lượng Cao</h4>
+        <p>Chỉ dùng vật liệu có CO/CQ từ nhà cung cấp uy tín: xi măng INSEE, sắt Hòa Phát, thiết bị Toto/Caesar.</p>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-num">03</div>
+      <div>
+        <h4>Đúng Tiến Độ & Ngân Sách</h4>
+        <p>Cam kết bàn giao đúng hạn. Dự toán minh bạch, không phát sinh chi phí ẩn ngoài hợp đồng đã ký.</p>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-num">04</div>
+      <div>
+        <h4>Bảo Hành 5 Năm</h4>
+        <p>Bảo hành kết cấu 5 năm, chống thấm 3 năm. Đội kỹ thuật bảo trì phản hồi trong 24 giờ.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- CONTACT -->
 <section class="contact" id="contact" aria-labelledby="contact-title">
@@ -751,6 +800,8 @@ footer { padding: 40px 16px 20px; }
     </div>
   </div>
 </section>
+<section class="why reveal" id="why"> <div class="section-tag"><span>Tại Sao Chọn Chúng Tôi</span></div> <h2 class="section-title">CAM KẾT<br>CHẤT LƯỢNG</h2> <div class="why-list"> <div class="why-item"> <div class="why-num">01</div> <div> <h4>Đội Ngũ Chuyên Nghiệp</h4> <p>Hơn 350 kỹ sư và kiến trúc sư có chứng chỉ hành nghề, kinh nghiệm thực tế đa dạng trên nhiều loại công trình lớn nhỏ.</p> </div> </div> <div class="why-item"> <div class="why-num">02</div> <div> <h4>Vật Liệu Chất Lượng Cao</h4> <p>Chỉ dùng vật liệu có CO/CQ từ nhà cung cấp uy tín: xi măng INSEE, sắt Hòa Phát, thiết bị Toto/Caesar.</p> </div> </div> <div class="why-item"> <div class="why-num">03</div> <div> <h4>Đúng Tiến Độ & Ngân Sách</h4> <p>Cam kết bàn giao đúng hạn. Dự toán minh bạch, không phát sinh chi phí ẩn ngoài hợp đồng đã ký.</p> </div> </div> <div class="why-item"> <div class="why-num">04</div> <div> <h4>Bảo Hành 5 Năm</h4> <p>Bảo hành kết cấu 5 năm, chống thấm 3 năm. Đội kỹ thuật bảo trì phản hồi trong 24 giờ.</p> </div> </div> </div> </section>
+
 
 <!-- FOOTER -->
 <footer>
