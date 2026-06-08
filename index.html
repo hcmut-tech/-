@@ -1694,6 +1694,24 @@ footer { padding: 40px 16px 20px; }
       btn.style.background = '';
     }, 4000);
   }
+
+  // Scroll dots
+const scroll = document.getElementById('projectsScroll');
+const dotsWrap = document.getElementById('scrollDots');
+const cards = scroll.querySelectorAll('.project-card');
+ 
+cards.forEach((_, i) => {
+  const d = document.createElement('div');
+  d.className = 'scroll-dot' + (i === 0 ? ' active' : '');
+  d.onclick = () => cards[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+  dotsWrap.appendChild(d);
+});
+ 
+const dots = dotsWrap.querySelectorAll('.scroll-dot');
+scroll.addEventListener('scroll', () => {
+  const idx = Math.round(scroll.scrollLeft / (cards[0].offsetWidth + 16));
+  dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+});
 </script>
 </body>
 </html>
